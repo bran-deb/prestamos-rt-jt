@@ -1,14 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 
 
 function App() {
+  //definir state
+  const [cantidad, setCantidad] = useState(0)
+
   return (
     <Fragment>
-      <Header titulo="Cotizador de Prestamos" />
+      <Header
+        titulo="Cotizador de Prestamos"
+      />
       <div className="container">
-        <Formulario></Formulario>
+        {/* pasamos el state via props */}
+        <Formulario
+          cantidad={cantidad}
+          setCantidad={setCantidad}
+        >
+        </Formulario>
       </div>
     </Fragment>
   )
