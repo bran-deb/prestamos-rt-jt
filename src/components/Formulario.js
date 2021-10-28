@@ -1,13 +1,11 @@
 import React from 'react';
 
 
-const Formulario = ({ cantidad, setCantidad }) => {
+const Formulario = ({ cantidad, setCantidad, plazo, setPlazo }) => {
 
 
     return (
         <form>
-            {/* mostramos la cantidad */}
-            {cantidad}
             <div>
                 <label>Cantidad Prestamo</label>
                 <input
@@ -20,7 +18,10 @@ const Formulario = ({ cantidad, setCantidad }) => {
             </div>
             <div>
                 <label>Plazo para pagar</label>
-                <select className="u-full-width">
+                <select
+                    className="u-full-width"
+                    onChange={(e) => setPlazo(parseInt(e.target.value))}
+                >
                     <option value="">Seleccionar</option>
                     <option value="3">3 meses</option>
                     <option value="6">6 meses</option>
