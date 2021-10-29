@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
+import Mensaje from './components/Mensaje';
+import Resultado from './components/Resultado';
 
 
 function App() {
@@ -8,6 +10,13 @@ function App() {
   const [cantidad, setCantidad] = useState(0)
   const [plazo, setPlazo] = useState('')
   const [total, setTotal] = useState(0)
+
+  //carga condicional de componentes
+  let componente
+  (total === 0)
+    ? componente = <Mensaje />
+    : componente = <Resultado />
+
 
   return (
     <Fragment>
@@ -24,7 +33,9 @@ function App() {
           total={total}
           setTotal={setTotal}
         />
-        <p>Total a pagar: {total}</p>
+        <div className="mensajes">
+          {componente}
+        </div>
       </div>
     </Fragment>
   )
