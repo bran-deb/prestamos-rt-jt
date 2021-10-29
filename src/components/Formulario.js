@@ -4,7 +4,7 @@ import { calcularTotal } from '../helpers/helpers';
 
 const Formulario = (props) => {
 
-    const { cantidad, setCantidad, plazo, setPlazo, setTotal } = props
+    const { cantidad, setCantidad, plazo, setPlazo, setTotal, setCargando } = props
     //definir state
     const [error, guardarError] = useState(false)
 
@@ -12,16 +12,24 @@ const Formulario = (props) => {
     const calcularPrestamo = (e) => {
         e.preventDefault()
         // validar
-        const resul = (cantidad === 0 || plazo === '' || isNaN(plazo) || isNaN(cantidad))
-        resul
-            ? guardarError(true)
-            : guardarError(false)
+        if (cantidad === 0 || plazo === '' || isNaN(plazo) || isNaN(cantidad)) {
+            guardarError(true)
+            return
+        }
+        guardarError(false)
+        setCargando(true)
 
-        //cotizar
-        const total = calcularTotal(cantidad, plazo)
 
-        //una vez calculado guardar total
-        setTotal(total)
+
+        setTimeout(() => {
+            //cotizar
+            const total = calcularTotal(cantidad, plazo)
+
+            //una vez calculado guardar total
+            setTotal(total)
+            //desabilito spinner
+            setCargando(false)
+        }, 2000);
     }
 
 
