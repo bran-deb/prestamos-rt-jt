@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 import Mensaje from './components/Mensaje';
-import Resultado from './components/Resultado';
+import MensajeResultado from './components/MensajeResultado';
 
 
 function App() {
@@ -13,9 +13,13 @@ function App() {
 
   //carga condicional de componentes
   let componente
-  (total === 0)
+  ((total === 0 || plazo === '' || isNaN(plazo) || isNaN(total)))
     ? componente = <Mensaje />
-    : componente = <Resultado />
+    : componente = <MensajeResultado
+      cantidad={cantidad}
+      plazo={plazo}
+      total={total}
+    />
 
 
   return (
