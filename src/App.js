@@ -7,6 +7,7 @@ function App() {
   //definir state
   const [cantidad, setCantidad] = useState(0)
   const [plazo, setPlazo] = useState('')
+  const [total, setTotal] = useState(0)
 
   return (
     <Fragment>
@@ -20,8 +21,10 @@ function App() {
           setCantidad={setCantidad}
           plazo={plazo}
           setPlazo={setPlazo}
-        >
-        </Formulario>
+          total={total}
+          setTotal={setTotal}
+        />
+        <p>Total a pagar: {total}</p>
       </div>
     </Fragment>
   )
