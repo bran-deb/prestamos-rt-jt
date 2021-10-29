@@ -17,7 +17,8 @@ const Formulario = ({ cantidad, setCantidad, plazo, setPlazo }) => {
             : guardarError(false)
 
         //cotizar
-        calcularTotal(cantidad, plazo)
+        const total = calcularTotal(cantidad, plazo)
+        console.log(total)
 
     }
 
